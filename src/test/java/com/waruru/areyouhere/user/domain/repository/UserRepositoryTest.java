@@ -23,7 +23,7 @@ class UserRepositoryTest {
 //    @Transactional
 //    @DisplayName("User 저장 테스트")
 //    void saveUser(){
-//        User user = SignUpDto.toEntity(new SignUpDto("hi98@naver.com", "hello123123"), passwordEncoder);
+//        User user = SignUpDto.toEntity(new SignUpDto("test98@naver.com", "test123123", "test"), passwordEncoder);
 //
 //        User savedUser = userRepository.save(user);
 //
@@ -37,8 +37,8 @@ class UserRepositoryTest {
 //    @DisplayName("User 조회 테스트")
 //    @Transactional
 //    void findMember(){
-//        User user1 = SignUpDto.toEntity(new SignUpDto("hi98@naver.com", "hello123123"), passwordEncoder);
-//        User user2 = SignUpDto.toEntity(new SignUpDto("bye98@naver.com", "bye123123"), passwordEncoder);
+//        User user1 = SignUpDto.toEntity(new SignUpDto("hi98@naver.com", "hello123123", "test1"), passwordEncoder);
+//        User user2 = SignUpDto.toEntity(new SignUpDto("bye98@naver.com", "bye123123", "test2"), passwordEncoder);
 //        userRepository.save(user1);
 //        userRepository.save(user2);
 //

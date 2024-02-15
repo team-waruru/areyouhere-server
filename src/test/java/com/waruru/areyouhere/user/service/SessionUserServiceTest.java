@@ -8,7 +8,6 @@ import com.waruru.areyouhere.user.domain.entity.User;
 import com.waruru.areyouhere.user.domain.repository.UserRepository;
 import com.waruru.areyouhere.user.dto.LoginDto;
 import com.waruru.areyouhere.user.dto.SignUpDto;
-import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,8 +15,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,7 +37,7 @@ class SessionUserServiceTest {
     @BeforeEach
     void setUp(){
         when(passwordEncoder.encode(any())).thenReturn("mockPassword123");
-        signUpDto = new SignUpDto("test123@naver.com", "test123123");
+        signUpDto = new SignUpDto("test123@naver.com", "test123123", "testman");
         loginDto = new LoginDto("test123@naver.com", "123123");
         user = SignUpDto.toEntity(signUpDto, passwordEncoder);
     }
