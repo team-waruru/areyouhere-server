@@ -1,4 +1,4 @@
-package com.waruru.areyouhere.user.dto;
+package com.waruru.areyouhere.user.dto.request;
 
 
 import com.waruru.areyouhere.user.domain.entity.User;
@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class SignUpDto {
+public class SignUpRequestDto {
 
     @NotEmpty
     @Email(message = "유효하지 않은 이메일 형식입니다.",
@@ -33,11 +33,11 @@ public class SignUpDto {
             regexp = "^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$")
     private String nickname;
 
-    public static User toEntity(SignUpDto signUpDto, PasswordEncoder passwordEncoder){
+    public static User toEntity(SignUpRequestDto signUpRequestDto, PasswordEncoder passwordEncoder){
         return User.builder()
-                .email(signUpDto.getEmail())
-                .password(passwordEncoder.encode(signUpDto.getPassword()))
-                .nickname(signUpDto.nickname)
+                .email(signUpRequestDto.getEmail())
+                .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
+                .nickname(signUpRequestDto.nickname)
                 .build();
     }
 }

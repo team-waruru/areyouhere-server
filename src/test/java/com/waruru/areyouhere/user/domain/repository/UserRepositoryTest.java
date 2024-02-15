@@ -2,14 +2,7 @@ package com.waruru.areyouhere.user.domain.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.waruru.areyouhere.user.domain.entity.User;
-import com.waruru.areyouhere.user.dto.SignUpDto;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 class UserRepositoryTest {
