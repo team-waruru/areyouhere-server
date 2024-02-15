@@ -4,6 +4,7 @@ package com.waruru.areyouhere.user.dto;
 import com.waruru.areyouhere.user.domain.entity.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,12 +24,20 @@ public class SignUpDto {
     private String email;
 
     @NotEmpty
+    @Pattern(message = "비밀 번호는 영문과 특수 문자, 숫자를 포함하여 8자 이상이어야 합니다.",
+            regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$")
     private String password;
+
+    @NotEmpty
+    @Pattern(message = "닉네임은 2자 이상 16자 이하의 영어, 숫자, 한글로 입력해주세요. 초성은 허가하지 않습니다.",
+            regexp = "^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$")
+    private String nickname;
 
     public static User toEntity(SignUpDto signUpDto, PasswordEncoder passwordEncoder){
         return User.builder()
                 .email(signUpDto.getEmail())
                 .password(passwordEncoder.encode(signUpDto.getPassword()))
+                .nickname(signUpDto.nickname)
                 .build();
     }
 }
